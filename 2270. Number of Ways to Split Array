@@ -1,0 +1,18 @@
+class Solution {
+    public int waysToSplitArray(int[] nums) {
+        long tsum = 0;
+        for(int a : nums){
+            tsum +=a;
+        }
+        long lefts =0;
+        int count =0;
+        for(int i=0;i<nums.length-1;i++){
+            lefts+=nums[i];
+            tsum-=nums[i];
+            if(lefts>=tsum){
+                count++;
+            }
+        }
+        return count;
+    }
+}
