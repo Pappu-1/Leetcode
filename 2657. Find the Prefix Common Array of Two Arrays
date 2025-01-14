@@ -1,0 +1,38 @@
+time complexity = O(n)
+Space complexity = O(n)
+
+class Solution {
+    public int[] findThePrefixCommonArray(int[] A, int[] B) {
+        int n = A.length;
+        int m = B.length;
+        HashSet<Integer> set = new HashSet<>();
+        int[] ans = new int[n];
+        int i=0,j=0;
+        while(i<n && j<m){
+            int count=0;
+            if(A[i] == B[j]){
+                count++;
+                set.add(A[i]);
+            }else{
+                if(set.contains(A[i])){
+                    count++;
+                }else{
+                    set.add(A[i]);
+                }
+                if(set.contains(B[j])){
+                    count++;
+                }else{
+                    set.add(B[j]);
+                }
+            }
+            if(i == 0){
+                ans[i] = count;
+            }else{
+                ans[i] = count + ans[i-1];
+            }
+            i++;
+            j++;
+        }
+        return ans;
+    }
+}
