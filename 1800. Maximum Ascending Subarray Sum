@@ -1,0 +1,16 @@
+class Solution {
+    public int maxAscendingSum(int[] nums) {
+        int n = nums.length;
+        if(n==1) return nums[0];
+        int maxx = Integer.MIN_VALUE;
+        int sum =0;
+        for(int i=0;i<n;i++){
+            sum += nums[i];
+            maxx = Math.max(maxx,sum);
+            if(i<n-1 && nums[i]>=nums[i+1]){
+                sum =0;
+            }
+        }
+        return maxx;
+    }
+}
